@@ -1,5 +1,6 @@
 
 var fs = require('fs');
+var cors = require('cores');
 var ratings = fs.readFileSync('reviews.json');
 var system = JSON.parse(ratings);
 
@@ -8,7 +9,7 @@ var express = require('express');
 var item = express();
 var port = item.listen(3000);
 
-
+item.use(cors());
 item.use(express.static('site'));
 item.get('/mood/:person/:selfrating', rate)
 item.get("/overall", all);
